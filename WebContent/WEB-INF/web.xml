@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+
+	<display-name>mvc ejemplo</display-name>
+
+	<absolute-ordering />
+
+	
+	<!-- 
+	ARCHIVOS XML DE SPRING.
+	LOS ARCHIVOS "spring_mvc_servlet.xml" y "web.xml", SON CASI SIEMPRE IGUALES EN LOS PROYECTOS 
+	***MVC CON SPRING***
+	
+	WEB.XML
+	*CONFIGURACION DE SERVIDOR DE SERVLETS:
+		-NOMBRE
+		-CLASE QUE DEBE USAR EL DISPATCHER SERVLET
+		
+		-NOMBRE Y VALOR, QUE APUNTAN AL SERVIDOR DE SERVLETS(spring_mvc_servlet.xml)  
+		
+		-ESPECIFICACIÓN DESDE LA CARPETA WEB-INF, LA URL DEL SERVLET.
+			INDICA A LA RAIZ CON UN "/"
+	-->
+	
+	
+	<!-- Configuracion del dispatcher servlet -->
+	<servlet>
+	
+		<!-- CONFIGURACION DE SERVIDOR DE SERVLETS -->
+		<servlet-name>dispatcher</servlet-name> 
+		
+		<!-- CLASE QUE DEBE USAR EL DISPATCHER SERVLET -->
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> 
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<!-- NOMBRE DEL SERVIDOR DE SERVLET -->
+			<param-value>/WEB-INF/spring_mvc_servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Ubicacion URL del servlet -->
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
